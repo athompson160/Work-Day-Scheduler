@@ -15,3 +15,40 @@ var sevenPm = $("#7pm");
 var hour = moment().hours();
 var userInput;
 var hourSpan;
+
+var interval = setInterval(function() {
+    var momentNow = moment();
+    $('#currentDay').html(momentNow.format('YYYY MMMM DD') + ' '
+                        + momentNow.format('dddd')
+                         .substring(0,3).toUpperCase());
+    $('#currentDay').html(currentDate + " " + momentNow.format('hh:mm:ss A'));
+  }, 100);
+  
+  
+    
+  
+  function background () {
+        
+    $(".form-control").each(function () {
+        var timeTest = parseInt($(this).attr("id"));
+        hour = parseInt(hour);
+        console.log(timeTest);
+        console.log(hour);
+  
+        if (hour > timeTest) {
+            $(this).addClass("past");
+        } else if (hour < timeTest) {
+            $(this).addClass("future");
+        } else {
+            $(this).addClass("present");
+        }
+    });
+  }
+  
+  $(document).ready(function(){
+    initPage()
+    background()
+  
+   
+  
+  });
